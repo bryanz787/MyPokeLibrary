@@ -12,7 +12,7 @@ public class PokemonCard extends Card{
     private int Stage;
     private List<Move> moves;
 
-    //REQUIRES: Hitpoints > 0, Stage in [1,2,3]
+    //REQUIRES: Hitpoints > 0, Stage in [0, 1, 2]
     //EFFECTS: Constructor for PokemonCard class
     public PokemonCard(String pokeName, String pokeType, Boolean holofoil, int hitPoints, int Stage, List<Move> moves) {
         this.pokeName = pokeName;
