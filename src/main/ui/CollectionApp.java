@@ -467,44 +467,48 @@ public class CollectionApp {
     private void addCardToDeck(Deck deck) {
         int pagesAvailable = calculatePages();
         int pageNum = 1;
-        boolean stop = false;
 
         printCards(pageNum, pagesAvailable, cardsList);
 
-        while (!stop) {
-            System.out.println("\nEnter the number of the card you want to add \nEnter N to view next page "
-                    + "\nEnter P to view previous page \nEnter Q to go back to the deck menu");
-            String command = input.next().toLowerCase();
+        while (true) {
+            String command = setCommand();
 
             if (hasLetters(command)) {
-                if (command.equals("n") && pageNum < pagesAvailable) {
-                    pageNum++;
+                if ((command.equals("n") && pageNum < pagesAvailable) || (command.equals("p") && pageNum > 1)) {
+                    pageNum = updatePageNum(command, pageNum);
                     printCards(pageNum, pagesAvailable, cardsList);
-                } else if (command.equals("p") && pageNum > 1) {
-                    pageNum--;
-                    printCards(pageNum, pagesAvailable, cardsList);
-                } else if (command.equals("q")) {
-                    stop = true;
                 } else if (command.equals("n") || command.equals("p")) {
                     System.out.println("\nYou tried to go to a page that doesn't exist, try again.");
                 } else {
-                    System.out.println("\nInput not recognized, redirecting to deck menu");
-                    stop = true;
+                    String toPrint = command.equals("q") ? "Going to deck menu" : "Input invalid, going to deck menu";
+                    System.out.println(toPrint);
+                    break;
                 }
-            } else if (Integer.valueOf(command) <= cardsList.collectionSize()) {
-                cardAdder(Integer.valueOf(command), deck);
-                printCards(pageNum, pagesAvailable, cardsList);
+            } else if (Integer.parseInt(command) <= cardsList.collectionSize()) {
+                cardAdder(Integer.valueOf(command), deck, pageNum, pagesAvailable);
             } else {
                 System.out.println("\nInput number too large, redirecting to deck menu");
-                stop = true;
+                break;
             }
         }
     }
 
+    //EFFECTS: returns string to set command to
+    private String setCommand() {
+        System.out.println("\nEnter the number of the card you want to add \nEnter N to view next page "
+                + "\nEnter P to view previous page \nEnter Q to go back to the deck menu");
+        return input.next().toLowerCase();
+    }
 
-    //MODIFIES: this
+    //EFFECTS: updates pageNum according to command
+    private int updatePageNum(String command, int pageNum) {
+        return (command.equals("p")) ? pageNum-- : pageNum++;
+    }
+
+
+    //MODIFIES: deck
     //EFFECTS: adds a card from cardslist into the given deck
-    private void cardAdder(Integer command, Deck deck) {
+    private void cardAdder(Integer command, Deck deck, Integer pageNum, Integer pagesAvailable) {
         Integer copyCount;
         Card toAdd = cardsList.getCard((command - 1));
         System.out.println("\nHow many copies of the card would you like to add to the deck?"
@@ -521,6 +525,8 @@ public class CollectionApp {
         }
 
         System.out.println("\nSuccess, " + copyCount + " cards added to " + deck.getDeckName());
+
+        printCards(pageNum, pagesAvailable, cardsList);
     }
 
     //MODIFIES: deckList

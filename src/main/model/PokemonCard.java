@@ -23,36 +23,31 @@ public class PokemonCard extends Card {
         this.moves = moves;
     }
 
-    //EFFECTS: returns full type name given abbreviation
-    @SuppressWarnings("methodlength")
+    //EFFECTS: returns full type name given abbreviation, defaults to colourless
     private String convertToType(String type) {
-        String toReturn = "";
-
         if (type.equals("r")) {
-            toReturn = "fire";
+            return "fire";
         } else if (type.equals("br")) {
-            toReturn = "fighting";
+            return "fighting";
         } else if (type.equals("go")) {
-            toReturn = "dragon";
+            return "dragon";
         } else if (type.equals("y")) {
-            toReturn = "electric";
+            return "electric";
         } else if (type.equals("gr")) {
-            toReturn = "grass";
+            return "grass";
         } else if (type.equals("bl")) {
-            toReturn = "water";
+            return "water";
         } else if (type.equals("pi")) {
-            toReturn = "fairy";
+            return "fairy";
         } else if (type.equals("pu")) {
-            toReturn = "psychic";
+            return "psychic";
         } else if (type.equals("b")) {
-            toReturn = "dark";
+            return "dark";
         } else if (type.equals("s")) {
-            toReturn = "steel";
-        } else if (type.equals("w")) {
-            toReturn = "colourless";
+            return "steel";
+        } else {
+            return "colourless";
         }
-
-        return toReturn;
     }
 
     //EFFECTS: Getter for the Pokemon cards name field
