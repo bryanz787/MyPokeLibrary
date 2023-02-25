@@ -66,14 +66,15 @@ public class CollectionTest {
         assertEquals(10 , test.countByCriteria("s"));
 
         test.addCard(first);
+        test.addCard(second);
         test.addCard(testTrainerA);
-        assertEquals(21 , test.countByCriteria("p"));
+        assertEquals(22 , test.countByCriteria("p"));
         assertEquals(11 , test.countByCriteria("t"));
         assertEquals(20 , test.countByCriteria("e"));
-        assertEquals(30 , test.countByCriteria("h"));
+        assertEquals(31 , test.countByCriteria("h"));
         assertEquals(10 , test.countByCriteria("b"));
         assertEquals(1 , test.countByCriteria("f"));
-        assertEquals(10 , test.countByCriteria("s"));
+        assertEquals(11 , test.countByCriteria("s"));
 
     }
 
