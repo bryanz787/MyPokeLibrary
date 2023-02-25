@@ -45,7 +45,7 @@ public class Collection {
             count = numBase();
         } else if (command.equals("f")) {
             count = numFirst();
-        } else if (command.equals("s")) {
+        } else {
             count = numSecond();
         }
 

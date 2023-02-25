@@ -74,7 +74,7 @@ public class CollectionTest {
         assertEquals(31 , test.countByCriteria("h"));
         assertEquals(10 , test.countByCriteria("b"));
         assertEquals(1 , test.countByCriteria("f"));
-        assertEquals(11 , test.countByCriteria("s"));
+        assertEquals(11 , test.countByCriteria("q"));
 
     }
 
