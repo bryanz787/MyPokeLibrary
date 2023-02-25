@@ -211,7 +211,7 @@ public class CollectionApp {
             System.out.println("\nInput the moves damage");
             damage = input.nextInt();
             System.out.println("\nInput the move effects, if none press enter");
-            effects = input.next().strip();
+            effects = input.next();
             if (effects.isEmpty()) {
                 effects = "No Additional Effects";
             }
