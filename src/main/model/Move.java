@@ -14,4 +14,19 @@ public class Move {
         this.damage = damage;
         this.moveEffects = moveEffects;
     }
+
+    //EFFECTS: getter, returns the move name
+    public String getMoveName() {
+        return moveName;
+    }
+
+    //EFFECTS: getter, returns the moves damage
+    public int getDamage() {
+        return damage;
+    }
+
+    //EFFECTS: getter, returns the moves effects
+    public String getMoveEffects() {
+        return moveEffects;
+    }
 }

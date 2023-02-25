@@ -1,10 +1,10 @@
 package model;
 
 //Represents a trainer card in a given collection, has attributes needed to describe the card
-public class TrainerCard extends Card{
+public class TrainerCard extends Card {
 
     private String cardName;
-    private Boolean holofoil;
+    private boolean holofoil;
     private String effects;
 
     //REQUIRES: Effects.length() > 0
@@ -13,16 +13,16 @@ public class TrainerCard extends Card{
         this.cardName = cardName;
         this.holofoil = holofoil;
         this.effects = effects;
-
-        confirmCreation(this.cardName);
     }
 
     //EFFECTS: Getter for trainer cards name
-    public String getCardName() {
+    @Override
+    public String getName() {
         return cardName;
     }
 
-    //EFFECTS: Getter for trainer cards holofoil status
+    //EFFECTS: retrieves the cards holo status
+    @Override
     public Boolean getHolofoil() {
         return holofoil;
     }

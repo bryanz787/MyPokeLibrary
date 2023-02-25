@@ -3,30 +3,61 @@ package model;
 import java.util.List;
 
 //Represents a pokemon card in a given collection, has attributes needed to describe the card
-public class PokemonCard extends Card{
+public class PokemonCard extends Card {
 
     private String pokeName;
     private String pokeType;
-    private Boolean holofoil;
+    private boolean holofoil;
     private int hitPoints;
-    private int Stage;
+    private int stage;
     private List<Move> moves;
 
     //REQUIRES: Hitpoints > 0, Stage in [0, 1, 2]
     //EFFECTS: Constructor for PokemonCard class
-    public PokemonCard(String pokeName, String pokeType, Boolean holofoil, int hitPoints, int Stage, List<Move> moves) {
+    public PokemonCard(String pokeName, String pokeType, Boolean holofoil, int hitPoints, int stage, List<Move> moves) {
         this.pokeName = pokeName;
-        this.pokeType = pokeType;
+        this.pokeType = convertToType(pokeType);
         this.holofoil = holofoil;
         this.hitPoints = hitPoints;
+        this.stage = stage;
+        this.moves = moves;
+    }
 
-        //Create a new method that uses the Move constructor and adds the moves list to the moves field
+    //EFFECTS: returns full type name given abbreviation
+    @SuppressWarnings("methodlength")
+    private String convertToType(String type) {
+        String toReturn = "";
 
-        confirmCreation(this.pokeName);
+        if (type.equals("r")) {
+            toReturn = "fire";
+        } else if (type.equals("br")) {
+            toReturn = "fighting";
+        } else if (type.equals("go")) {
+            toReturn = "dragon";
+        } else if (type.equals("y")) {
+            toReturn = "electric";
+        } else if (type.equals("gr")) {
+            toReturn = "grass";
+        } else if (type.equals("bl")) {
+            toReturn = "water";
+        } else if (type.equals("pi")) {
+            toReturn = "fairy";
+        } else if (type.equals("pu")) {
+            toReturn = "psychic";
+        } else if (type.equals("b")) {
+            toReturn = "dark";
+        } else if (type.equals("s")) {
+            toReturn = "steel";
+        } else if (type.equals("w")) {
+            toReturn = "colourless";
+        }
+
+        return toReturn;
     }
 
     //EFFECTS: Getter for the Pokemon cards name field
-    public String getPokeName() {
+    @Override
+    public String getName() {
         return pokeName;
     }
 
@@ -35,7 +66,8 @@ public class PokemonCard extends Card{
         return pokeType;
     }
 
-    //EFFECTS: Getter for the holofoil status field
+    //EFFECTS: retrieves the cards holo status
+    @Override
     public Boolean getHolofoil() {
         return holofoil;
     }
@@ -47,7 +79,7 @@ public class PokemonCard extends Card{
 
     //EFFECTS: Getter for the Pokemon cards stage field
     public int getStage() {
-        return Stage;
+        return stage;
     }
 
     //EFFECTS: Getter for the moves field
