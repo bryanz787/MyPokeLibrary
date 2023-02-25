@@ -211,8 +211,8 @@ public class CollectionApp {
             System.out.println("\nInput the moves damage");
             damage = input.nextInt();
             System.out.println("\nInput the move effects, if none press enter");
-            effects = input.next();
-            if (effects.isBlank()) {
+            effects = input.next().strip();
+            if (effects.isEmpty()) {
                 effects = "No Additional Effects";
             }
 
@@ -377,7 +377,7 @@ public class CollectionApp {
                 + "\nEnter anything else to continue back to page navigation");
         String command = input.next();
 
-        if (!hasLetters(command) && !command.isBlank()) {
+        if (!hasLetters(command) && !command.isEmpty()) {
             Integer index = Integer.valueOf(command) - 1;
             Card toView = cardsList.getCard(index);
 
