@@ -2,6 +2,7 @@ package ui;
 
 import model.*;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9,15 +10,18 @@ import java.util.Scanner;
 
 public class CollectionApp {
 
-    private static int CARDS_PER_PAGE = 10;
+    private static final int CARDS_PER_PAGE = 10;
+    private static final String JSON_Store = "./data/myCollection.json";
 
     private String userName;
     private Collection cardsList;
     private List<Deck> deckList;
     private Scanner input;
+    //private JsonWriter writer;
+    //private JsonReader reader;
 
     //EFFECTS: runs the pokemon card collection app
-    public CollectionApp() {
+    public CollectionApp() throws FileNotFoundException {
         runCollectionApp();
     }
 
@@ -28,6 +32,7 @@ public class CollectionApp {
         String command = null;
 
         init();
+        greet();
 
         while (!stop) {
             mainMenu();
@@ -50,7 +55,12 @@ public class CollectionApp {
         deckList = new ArrayList<Deck>();
         input = new Scanner(System.in);
         input.useDelimiter("\n");
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
+    }
 
+    //EFFECTS: Greets user, gets users username
+    private void greet() {
         System.out.println("Welcome to your PokeLibrary, your convenient pokemon card collection app!\n"
                 + "Before we start, please input a username.");
         userName = input.next();
