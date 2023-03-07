@@ -28,3 +28,5 @@ collection.
 - As a user, I want to be able to create decks with the cards in my collection
 - As a user, I want to be able to check if my deck satisfies the *Pokémon  
 Trading Card Game* official deck rules.
+- As a user, I want to be able to save my collection to a file before I exit
+- As a user, I want to be able to load my collection from a file if I so choose
