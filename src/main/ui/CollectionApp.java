@@ -55,8 +55,8 @@ public class CollectionApp {
         deckList = new ArrayList<Deck>();
         input = new Scanner(System.in);
         input.useDelimiter("\n");
-        jsonWriter = new JsonWriter(JSON_STORE);
-        jsonReader = new JsonReader(JSON_STORE);
+        //jsonWriter = new JsonWriter(JSON_STORE);
+        //jsonReader = new JsonReader(JSON_STORE);
     }
 
     //EFFECTS: Greets user, gets users username

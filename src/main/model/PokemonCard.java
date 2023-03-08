@@ -45,8 +45,10 @@ public class PokemonCard extends Card {
             return "dark";
         } else if (type.equals("s")) {
             return "steel";
-        } else {
+        } else if (type.equals("w")) {
             return "colourless";
+        } else {
+            return type;
         }
     }
 

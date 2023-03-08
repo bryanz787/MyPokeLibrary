@@ -17,6 +17,7 @@ public class EnergyCardTest {
     EnergyCard testEnergyB;
     EnergyCard testEnergyS;
     EnergyCard testEnergyW;
+    EnergyCard testEnergyOther;
 
     @BeforeEach
     public void setup() {
@@ -31,6 +32,7 @@ public class EnergyCardTest {
         testEnergyB = new EnergyCard("b", false);
         testEnergyS = new EnergyCard("s", false);
         testEnergyW = new EnergyCard("w", true);
+        testEnergyOther = new EnergyCard("dragon", false);
     }
 
     @Test
@@ -46,6 +48,7 @@ public class EnergyCardTest {
         assertEquals("dark energy", testEnergyB.getName());
         assertEquals("steel energy", testEnergyS.getName());
         assertEquals("colourless energy", testEnergyW.getName());
+        assertEquals("dragon energy", testEnergyOther.getName());
 
         assertFalse(testEnergyBl.getHolofoil());
         assertTrue(testEnergyW.getHolofoil());
