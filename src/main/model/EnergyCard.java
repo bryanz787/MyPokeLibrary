@@ -16,6 +16,7 @@ public class EnergyCard extends Card {
     }
 
     //EFFECTS: returns full type name given abbreviation, defaults to colourless
+    @SuppressWarnings("methodlength")
     private String convertToType(String type) {
         if (type.equals("r")) {
             return "fire";

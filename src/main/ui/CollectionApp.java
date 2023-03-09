@@ -647,7 +647,7 @@ public class CollectionApp {
         JSONObject json = new JSONObject();
         JSONArray jsonArray = new JSONArray();
 
-        for(Deck d : deckList) {
+        for (Deck d : deckList) {
             jsonArray.put(d.toJson());
         }
 
