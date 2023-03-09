@@ -1,5 +1,6 @@
 package model;
 
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -55,5 +56,12 @@ public class EnergyCardTest {
 
         assertEquals("colourless", testEnergyW.getType());
         assertEquals("electric", testEnergyY.getType());
+    }
+
+    @Test
+    public void testToJson() {
+        JSONObject testJ = testEnergyBr.toJson();
+        assertEquals("fighting", testJ.get("type"));
+        assertEquals(false, testJ.get("holofoil"));
     }
 }

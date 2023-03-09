@@ -139,16 +139,9 @@ public class Collection implements Writable {
         return count;
     }
 
-    //EFFECTS: returns collection as json object
+    //EFFECTS: returns collection as json array
     @Override
     public JSONArray toJson() {
-//        JSONObject json = new JSONObject();
-//        json.put("cards", cardsToJson());
-        return cardsToJson();
-    }
-
-    // EFFECTS: returns things in this workroom as a JSON array
-    private JSONArray cardsToJson() {
         JSONArray jsonArray = new JSONArray();
 
         for (Card c : collection) {

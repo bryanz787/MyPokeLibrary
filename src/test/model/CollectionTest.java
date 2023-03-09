@@ -1,5 +1,7 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -78,4 +80,24 @@ public class CollectionTest {
 
     }
 
+    @Test
+    public void testToJson() {
+        for (int i = 0; i < 5; i++) {
+            test.addCard(base);
+            test.addCard(second);
+            test.addCard(testEnergyA);
+            test.addCard(testEnergyB);
+            test.addCard(testTrainerB);
+        }
+        JSONArray testJ = test.toJson();
+
+        Integer count = 0;
+        for (Object j: testJ) {
+            count++;
+        }
+
+        assertEquals(25, count);
+        assertEquals("pokemon", testJ.getJSONObject(6).getString("cardType"));
+        assertEquals(2, testJ.getJSONObject(6).getString("stage"));
+    }
 }

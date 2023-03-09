@@ -30,6 +30,13 @@ public class CollectionApp {
         runCollectionApp();
     }
 
+    //EFFECTS: secondary constructor used for testing, initalizes the values of the fields but doesnt run ui
+    public CollectionApp(String userName, Collection cardsList, List<Deck> deckList) {
+        this.userName = userName;
+        this.cardsList = cardsList;
+        this.deckList = deckList;
+    }
+
     // MODIFIES: this
     // EFFECTS: processes user input
     private void runCollectionApp() {

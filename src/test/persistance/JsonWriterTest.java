@@ -27,17 +27,17 @@ class JsonWriterTest {
     }
 
     @Test
-    void testWriterEmptyWorkroom() {
+    void testWriterSingleField() {
         try {
             String userName = "Bryan";
-            JsonWriter writer = new JsonWriter("./data/testWriter.json");
+            JsonWriter writer = new JsonWriter("./data/testSingle.json");
             JSONObject json = new JSONObject();
             json.put("userName", userName);
             writer.open();
             writer.write(json);
             writer.close();
 
-            JsonReader reader = new JsonReader("./data/testWriter.json");
+            JsonReader reader = new JsonReader("./data/testSingle.json");
             userName = reader.readString();
             assertEquals("Bryan", userName);
 
@@ -47,7 +47,7 @@ class JsonWriterTest {
             writer.write(json);
             writer.close();
 
-            reader = new JsonReader("./data/testWriter.json");
+            reader = new JsonReader("./data/testSingle.json");
             userName = reader.readString();
             assertEquals("George", userName);
         } catch (IOException e) {

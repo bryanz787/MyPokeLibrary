@@ -1,5 +1,6 @@
 package model;
 
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -225,5 +226,23 @@ public class DeckTest {
             test.addCard(testEnergyB);
         }
         assertEquals(13, test.energyCount());
+    }
+
+    @Test
+    public void testToJson() {
+        test = new Deck("test");
+        for (int i = 0; i < 4; i ++) {
+            test.addCard(base);
+        }
+        for (int i = 0; i < 55; i ++) {
+            test.addCard(testEnergyB);
+        }
+        test.addCard(testTrainerA);
+
+        JSONObject testJ = test.toJson();
+
+        assertEquals("test", testJ.getString("deckName"));
+        assertFalse(testJ.getJSONArray("cards").getJSONObject(2).getBoolean("holofoil"));
+        assertEquals("testTrainer", testJ.getJSONArray("cards").getJSONObject(59).getString("cardName"));
     }
 }

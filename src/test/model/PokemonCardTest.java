@@ -1,5 +1,6 @@
 package model;
 
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -21,6 +22,7 @@ public class PokemonCardTest {
     PokemonCard testPokeB;
     PokemonCard testPokeS;
     PokemonCard testPokeW;
+    PokemonCard testPokeOther;
 
     @BeforeEach
     public void setup() {
@@ -46,7 +48,8 @@ public class PokemonCardTest {
                 90, 1);
         testPokeW = new PokemonCard("colourless", "w",true,
                 30, 2);
-
+        testPokeOther = new PokemonCard("fire", "fire",true,
+                30, 2);
     }
 
     @Test
@@ -56,6 +59,7 @@ public class PokemonCardTest {
 
         assertEquals("dragon", testPokeGo.getPokeType());
         assertEquals("electric", testPokeY.getPokeType());
+        assertEquals("fire", testPokeOther.getPokeType());
 
         assertTrue(testPokeGr.getHolofoil());
         assertFalse(testPokeBl.getHolofoil());
@@ -66,6 +70,14 @@ public class PokemonCardTest {
         assertEquals(0, testPokeB.getStage());
         assertEquals(1, testPokeS.getStage());
         assertEquals(2, testPokeW.getStage());
+    }
+
+    @Test
+    public void testToJson() {
+        JSONObject testJ = testPokeR.toJson();
+        assertEquals("fire", testJ.get("pokeName"));
+        assertEquals(0, testJ.get("stage"));
+
     }
 
 }

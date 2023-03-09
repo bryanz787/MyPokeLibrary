@@ -1,5 +1,6 @@
 package model;
 
+import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -25,5 +26,12 @@ public class TrainerCardTest {
 
         assertEquals("draw 3 cards from deck", testTrainerA.getEffects());
         assertEquals("none", testTrainerB.getEffects());
+    }
+
+    @Test
+    public void testToJson() {
+        JSONObject testJ = testTrainerA.toJson();
+        assertEquals("testTrainerA", testJ.get("cardName"));
+        assertEquals(false, testJ.get("holofoil"));
     }
 }
