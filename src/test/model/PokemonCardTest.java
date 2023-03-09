@@ -21,36 +21,31 @@ public class PokemonCardTest {
     PokemonCard testPokeB;
     PokemonCard testPokeS;
     PokemonCard testPokeW;
-    Move testMoveA;
-    Move testMoveB;
 
     @BeforeEach
     public void setup() {
-        testMoveA = new Move("test move a", 100, "no additional effects");
-        testMoveB = new Move("test move b", 0, "poison the opponents pokemon");
-
         testPokeR = new PokemonCard("fire", "r",false,
-                100, 0, new ArrayList<Move>(Arrays.asList(testMoveA, testMoveB)));
+                100, 0);
         testPokeBr = new PokemonCard("fighting", "br",true,
-                130, 1, new ArrayList<Move>());
+                130, 1);
         testPokeGo = new PokemonCard("dragon", "go",false,
-                100, 1, new ArrayList<Move>(Arrays.asList(testMoveA, testMoveB)));
+                100, 1);
         testPokeY = new PokemonCard("electric", "y",false,
-                40, 1, new ArrayList<Move>(Arrays.asList(testMoveB)));
+                40, 1);
         testPokeGr = new PokemonCard("grass", "gr",true,
-                100, 2, new ArrayList<Move>(Arrays.asList(testMoveA, testMoveB)));
+                100, 2);
         testPokeBl = new PokemonCard("water", "bl",false,
-                110, 1, new ArrayList<Move>(Arrays.asList(testMoveA)));
+                110, 1);
         testPokePi = new PokemonCard("fairy", "pi",false,
-                120, 2, new ArrayList<Move>());
+                120, 2);
         testPokePu = new PokemonCard("psychic", "pu",true,
-                70, 0, new ArrayList<Move>());
+                70, 0);
         testPokeB = new PokemonCard("dark", "b",false,
-                100, 0, new ArrayList<Move>(Arrays.asList(testMoveB)));
+                100, 0);
         testPokeS = new PokemonCard("steel", "s",false,
-                90, 1, new ArrayList<Move>(Arrays.asList(testMoveA)));
+                90, 1);
         testPokeW = new PokemonCard("colourless", "w",true,
-                30, 2, new ArrayList<Move>(Arrays.asList(testMoveA, testMoveB)));
+                30, 2);
 
     }
 
@@ -71,11 +66,6 @@ public class PokemonCardTest {
         assertEquals(0, testPokeB.getStage());
         assertEquals(1, testPokeS.getStage());
         assertEquals(2, testPokeW.getStage());
-
-        assertEquals(new ArrayList<Move>(), testPokeBr.getMoves());
-        assertEquals(new ArrayList<Move>(Arrays.asList(testMoveA)), testPokeS.getMoves());
-        assertEquals(new ArrayList<Move>(Arrays.asList(testMoveB)), testPokeB.getMoves());
-        assertEquals(new ArrayList<Move>(Arrays.asList(testMoveA, testMoveB)), testPokeW.getMoves());
     }
 
 }

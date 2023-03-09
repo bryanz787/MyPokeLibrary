@@ -21,11 +21,11 @@ public class CollectionTest {
     public void setUp() {
         test = new Collection();
         base = new PokemonCard("base", "pi", false,
-                50, 0, new ArrayList<>());
+                50, 0);
         first = new PokemonCard("first", "pi", false,
-                70, 1, new ArrayList<>());
+                70, 1);
         second = new PokemonCard("second", "pi", true,
-                120, 2, new ArrayList<>());
+                120, 2);
         testTrainerA = new TrainerCard("testTrainer", false, "none");
         testTrainerB = new TrainerCard("testTrainer", true, "none");
         testEnergyA = new EnergyCard("r", false);

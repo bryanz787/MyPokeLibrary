@@ -3,8 +3,6 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class DeckTest {
@@ -21,11 +19,11 @@ public class DeckTest {
     public void setUp() {
         test = new Deck("test");
         base = new PokemonCard("base", "pi", false,
-                50, 0, new ArrayList<>());
+                50, 0);
         first = new PokemonCard("first", "pi", false,
-                70, 1, new ArrayList<>());
+                70, 1);
         second = new PokemonCard("second", "pi", true,
-                120, 2, new ArrayList<>());
+                120, 2);
         testTrainerA = new TrainerCard("testTrainer", false, "none");
         testTrainerB = new TrainerCard("testTrainer", true, "none");
         testEnergyA = new EnergyCard("r", false);

@@ -1,5 +1,8 @@
 package model;
 
+import org.json.JSONObject;
+import persistance.Writable;
+
 import java.util.List;
 
 //Represents a pokemon card in a given collection, has attributes needed to describe the card
@@ -10,17 +13,15 @@ public class PokemonCard extends Card {
     private boolean holofoil;
     private int hitPoints;
     private int stage;
-    private List<Move> moves;
 
     //REQUIRES: Hitpoints > 0, Stage in [0, 1, 2]
     //EFFECTS: Constructor for PokemonCard class
-    public PokemonCard(String pokeName, String pokeType, Boolean holofoil, int hitPoints, int stage, List<Move> moves) {
+    public PokemonCard(String pokeName, String pokeType, Boolean holofoil, int hitPoints, int stage) {
         this.pokeName = pokeName;
         this.pokeType = convertToType(pokeType);
         this.holofoil = holofoil;
         this.hitPoints = hitPoints;
         this.stage = stage;
-        this.moves = moves;
     }
 
     //EFFECTS: returns full type name given abbreviation, defaults to colourless
@@ -52,6 +53,19 @@ public class PokemonCard extends Card {
         }
     }
 
+    //EFFECTS: returns card as JSON object
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("cardType", "pokemon");
+        json.put("pokeName", pokeName);
+        json.put("pokeType", pokeType);
+        json.put("holofoil", holofoil);
+        json.put("hitpoints", hitPoints);
+        json.put("stage", stage);
+        return json;
+    }
+
     //EFFECTS: Getter for the Pokemon cards name field
     @Override
     public String getName() {
@@ -77,10 +91,5 @@ public class PokemonCard extends Card {
     //EFFECTS: Getter for the Pokemon cards stage field
     public int getStage() {
         return stage;
-    }
-
-    //EFFECTS: Getter for the moves field
-    public List<Move> getMoves() {
-        return moves;
     }
 }

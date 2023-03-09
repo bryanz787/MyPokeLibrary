@@ -1,10 +1,14 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistance.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 
 //A class representing a person and their pokemon card collection
-public class Collection {
+public class Collection implements Writable {
     private List<Card> collection;
 
 
@@ -133,5 +137,24 @@ public class Collection {
             }
         }
         return count;
+    }
+
+    //EFFECTS: returns collection as json object
+    @Override
+    public JSONArray toJson() {
+//        JSONObject json = new JSONObject();
+//        json.put("cards", cardsToJson());
+        return cardsToJson();
+    }
+
+    // EFFECTS: returns things in this workroom as a JSON array
+    private JSONArray cardsToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Card c : collection) {
+            jsonArray.put(c.toJson());
+        }
+
+        return jsonArray;
     }
 }

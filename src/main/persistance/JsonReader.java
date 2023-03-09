@@ -24,18 +24,25 @@ public class JsonReader {
     private String readFile(String source) throws IOException {
         StringBuilder contentBuilder = new StringBuilder();
 
-        try (Stream<String> stream = Files.lines( Paths.get(source), StandardCharsets.UTF_8)) {
+        try (Stream<String> stream = Files.lines(Paths.get(source), StandardCharsets.UTF_8)) {
             stream.forEach(s -> contentBuilder.append(s));
         }
 
         return contentBuilder.toString();
     }
 
-    // EFFECTS: parses workroom from JSON object and returns it
-    public String readUsername() throws IOException{
+    // EFFECTS: parses userName from JSON object and returns it
+    public String readUsername() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
-        return jsonObject.getString("name");
+        return jsonObject.getString("userName");
+    }
+
+    // EFFECTS: parses string from JSON object and returns it used to test writer
+    public String readString() throws IOException {
+        String jsonData = readFile(source);
+        JSONObject jsonObject = new JSONObject(jsonData);
+        return jsonObject.getString("userName");
     }
 
     // EFFECTS: reads collection from file and returns it;
@@ -43,7 +50,7 @@ public class JsonReader {
     public Collection readCollection() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
-        JSONArray jsonArray = jsonObject.getJSONArray("collection");
+        JSONArray jsonArray = jsonObject.getJSONArray("cardsList");
         return parseCollection(jsonArray);
     }
 
@@ -66,7 +73,7 @@ public class JsonReader {
     // MODIFIES: c
     // EFFECTS: parses card from JSON object and adds it to collection depending on card type
     private void addCardCollection(Collection c, JSONObject jsonObject) {
-        String cardType = String.valueOf(jsonObject.getString("category"));
+        String cardType = jsonObject.getString("cardType");
         Card card;
 
         if (cardType.equals("pokemon")) {
@@ -82,11 +89,11 @@ public class JsonReader {
 
     //EFFECTS: parses pokemon card from JSON object and returns it
     private Card addPokemon(JSONObject jsonObject) {
-        String pokeName = String.valueOf(jsonObject.getString("pokeName"));
-        String pokeType = String.valueOf(jsonObject.getString("pokeType"));
-        Boolean holofoil = Boolean.valueOf(jsonObject.getString("holofoil"));
-        Integer hitPoints = Integer.valueOf(jsonObject.getString("hitPoints"));
-        Integer stage = Integer.valueOf(jsonObject.getString("stage"));
+        String pokeName = jsonObject.getString("pokeName");
+        String pokeType = jsonObject.getString("pokeType");
+        Boolean holofoil = jsonObject.getBoolean("holofoil");
+        Integer hitPoints = jsonObject.getInt("hitpoints");
+        Integer stage = jsonObject.getInt("stage");
 
         return new PokemonCard(pokeName, pokeType, holofoil, hitPoints, stage);
     }
@@ -94,17 +101,17 @@ public class JsonReader {
 
     //EFFECTS: parses trainer card from JSON object and returns it
     private Card addTrainer(JSONObject jsonObject) {
-        String cardName = String.valueOf(jsonObject.getString("pokeName"));
-        Boolean holofoil = Boolean.valueOf(jsonObject.getString("holofoil"));
-        String effects = String.valueOf(jsonObject.getString("effects"));
+        String cardName = jsonObject.getString("cardName");
+        Boolean holofoil = jsonObject.getBoolean("holofoil");
+        String effects = jsonObject.getString("effects");
 
         return new TrainerCard(cardName, holofoil, effects);
     }
 
     //EFFECTS: parses energy card from JSON object and returns it
     private Card addEnergy(JSONObject jsonObject) {
-        String type = String.valueOf(jsonObject.getString("type"));
-        Boolean holofoil = Boolean.valueOf(jsonObject.getString("holofoil"));
+        String type = jsonObject.getString("type");
+        Boolean holofoil = jsonObject.getBoolean("holofoil");
 
         return new EnergyCard(type, holofoil);
     }
@@ -114,7 +121,7 @@ public class JsonReader {
     public List<Deck> readDeckList() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
-        JSONArray jsonArray = jsonObject.getJSONArray("deckList");
+        JSONArray jsonArray = jsonObject.getJSONArray("decksList");
         return parseDeckList(jsonArray);
     }
 
@@ -129,19 +136,19 @@ public class JsonReader {
     // EFFECTS: parses deck list and adds decks to deck list
     private void addDecks(List<Deck> dl, JSONArray jsonArray) {
         for (Object json : jsonArray) {
-            JSONArray nextDeck = (JSONArray) json;
-            addDeck(dl, nextDeck);
+            addDeck(dl, json);
         }
+
     }
 
     // MODIFIES: dl
     // EFFECTS: parses card from JSON object and adds it to deck then adds deck to dl
-    private void addDeck(List<Deck> dl, JSONArray jsonArray) {
-        Deck deck = new Deck(jsonArray.getString(0));
-        Object cardArray = jsonArray.get(1);
+    private void addDeck(List<Deck> dl, Object jsonObject) {
+        Deck deck = new Deck(((JSONObject) jsonObject).getString("deckName"));
+        Object cardArray = ((JSONObject) jsonObject).get("cards");
         for (Object json : (JSONArray) cardArray) {
             JSONObject nextCard = (JSONObject) json;
-            addCardDeck(deck , nextCard);
+            addCardDeck(deck, nextCard);
         }
         dl.add(deck);
 
@@ -150,7 +157,7 @@ public class JsonReader {
     //MODIFIES: deck
     //EFFECTS: parses card from JSON object and adds card to deck
     private void addCardDeck(Deck deck, JSONObject jsonObject) {
-        String cardType = String.valueOf(jsonObject.getString("category"));
+        String cardType = String.valueOf(jsonObject.getString("cardType"));
         Card card;
 
         if (cardType.equals("pokemon")) {

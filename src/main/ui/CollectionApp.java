@@ -1,8 +1,13 @@
 package ui;
 
 import model.*;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistance.JsonReader;
+import persistance.JsonWriter;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -11,14 +16,14 @@ import java.util.Scanner;
 public class CollectionApp {
 
     private static final int CARDS_PER_PAGE = 10;
-    private static final String JSON_Store = "./data/myCollection.json";
+    private static final String JSON_STORE = "./data/emptyTest.json";
 
     private String userName;
     private Collection cardsList;
     private List<Deck> deckList;
     private Scanner input;
-    //private JsonWriter writer;
-    //private JsonReader reader;
+    private JsonWriter writer;
+    private JsonReader reader;
 
     //EFFECTS: runs the pokemon card collection app
     public CollectionApp() throws FileNotFoundException {
@@ -29,10 +34,10 @@ public class CollectionApp {
     // EFFECTS: processes user input
     private void runCollectionApp() {
         boolean stop = false;
-        String command = null;
+        String command;
 
         init();
-        greet();
+        load();
 
         while (!stop) {
             mainMenu();
@@ -44,6 +49,7 @@ public class CollectionApp {
                 redirect(command);
             }
         }
+        save();
 
         System.out.println("\nThanks for using My PokeLibrary, see you next time!");
     }
@@ -55,14 +61,66 @@ public class CollectionApp {
         deckList = new ArrayList<Deck>();
         input = new Scanner(System.in);
         input.useDelimiter("\n");
-        //jsonWriter = new JsonWriter(JSON_STORE);
-        //jsonReader = new JsonReader(JSON_STORE);
+        writer = new JsonWriter(JSON_STORE);
+        reader = new JsonReader(JSON_STORE);
+    }
+
+    //MODIFIES: userName, cardsList, decksList
+    //EFFECTS: gives the option of loading in a previous state to the user
+    public void load() {
+        System.out.println("\nWelcome to your PokeLibrary, your convenient pokemon card collection app!\n"
+                + "To get started enter L if you would like to load in the previous save,"
+                + " enter anything else to start a new collection");
+        String action = input.next().toLowerCase();
+
+        if (action.equals("l")) {
+            loadCollectionApp();
+        } else {
+            greet();
+        }
+    }
+
+    //MODIFIES: ./data/singlePokeTestFile.json
+    //EFFECTS: gives the option of saving the current state to the user
+    public void save() {
+        System.out.println("\nBefore you go, would you like to save your collection? Keep in mind this overwrites"
+                            + " the previous save file.");
+        System.out.println("Enter S to save the current state, anything else to quit the program");
+        String action = input.next().toLowerCase();
+
+        if (action.equals("s")) {
+            saveCollectionApp();
+        }
+    }
+
+    // EFFECTS: saves the workroom to file
+    private void saveCollectionApp() {
+        try {
+            writer.open();
+            writer.write(toJson());
+            writer.close();
+            System.out.println("Saved " + userName + "'s collection data to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads workroom from file
+    private void loadCollectionApp() {
+        try {
+            userName = reader.readUsername();
+            cardsList = reader.readCollection();
+            deckList = reader.readDeckList();
+            System.out.println("Loaded " + userName + "'s collection from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
     }
 
     //EFFECTS: Greets user, gets users username
     private void greet() {
-        System.out.println("Welcome to your PokeLibrary, your convenient pokemon card collection app!\n"
-                + "Before we start, please input a username.");
+        System.out.println("\nBefore we start, please input a username.");
         userName = input.next();
         System.out.println("\nWelcome " + userName + "!");
     }
@@ -147,7 +205,6 @@ public class CollectionApp {
         boolean holofoil;
         int hitPoints;
         int stage;
-        List<Move> moves;
 
         System.out.println("\nEnter the pokemons name:");
         pokeName = input.next();
@@ -165,9 +222,7 @@ public class CollectionApp {
         System.out.println("\nWhat stage evolution is the card? If basic type 0");
         stage = input.nextInt();
 
-        moves = addMoves();
-
-        return new PokemonCard(pokeName, pokeType, holofoil, hitPoints, stage, moves);
+        return new PokemonCard(pokeName, pokeType, holofoil, hitPoints, stage);
     }
 
     //EFFECTS: prints out the list of pokemon/energy types available to the player for selection.
@@ -201,35 +256,6 @@ public class CollectionApp {
         } else {
             return "no";
         }
-    }
-
-    //EFFECTS: returns a list of moves for a given pokemon card
-    public List<Move> addMoves() {
-        int numMoves;
-        List<Move> moves = new ArrayList<Move>();
-
-        System.out.println("\nHow many moves does the pokemon have?");
-        numMoves = input.nextInt();
-
-        for (int i = 0; i < numMoves; i++) {
-            String moveName;
-            int damage;
-            String effects;
-
-            System.out.println("\nInput the move name");
-            moveName = input.next();
-            System.out.println("\nInput the moves damage");
-            damage = input.nextInt();
-            System.out.println("\nInput the move effects, if none press enter");
-            effects = input.next();
-            if (effects.isEmpty()) {
-                effects = "No Additional Effects";
-            }
-
-            moves.add(new Move(moveName, damage, effects));
-        }
-
-        return moves;
     }
 
     //EFFECTS: Initializes a new trainerCard object according to inputs
@@ -394,9 +420,7 @@ public class CollectionApp {
             if (toView instanceof PokemonCard) {
                 System.out.println(toView.getName() + "\nType:" + ((PokemonCard) toView).getPokeType() + "\nHitpoints: "
                         + ((PokemonCard) toView).getHitPoints() + "\nHolofoil: "
-                        + holofoilBooltoStr(toView.getHolofoil()) + "\nMoves: ");
-
-                printMoves((PokemonCard) toView);
+                        + holofoilBooltoStr(toView.getHolofoil()));
 
             } else if (toView instanceof TrainerCard) {
                 System.out.println(toView.getName() + "\nHolofoil: " + holofoilBooltoStr(toView.getHolofoil())
@@ -405,13 +429,6 @@ public class CollectionApp {
             } else if (toView instanceof EnergyCard) {
                 System.out.println(toView.getName() + "\nHolofoil: " + holofoilBooltoStr(toView.getHolofoil()));
             }
-        }
-    }
-
-    //EFFECTS: prints the pokemon cards moves
-    private void printMoves(PokemonCard toView) {
-        for (Move m : toView.getMoves()) {
-            System.out.println(m.getMoveName() + "    damage: " + m.getDamage() + "    effects: " + m.getMoveEffects());
         }
     }
 
@@ -624,5 +641,23 @@ public class CollectionApp {
         }
         System.out.println("");
     }
+
+    //EFFECTS: converts the state of the collectionApp to a jsonObject
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        JSONArray jsonArray = new JSONArray();
+
+        for(Deck d : deckList) {
+            jsonArray.put(d.toJson());
+        }
+
+        json.put("userName", userName);
+        json.put("cardsList", cardsList.toJson());
+        json.put("decksList", jsonArray);
+
+        return json;
+
+    }
+
 
 }

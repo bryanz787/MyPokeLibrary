@@ -1,5 +1,8 @@
 package model;
 
+import org.json.JSONObject;
+import persistance.Writable;
+
 //Represents a trainer card in a given collection, has attributes needed to describe the card
 public class TrainerCard extends Card {
 
@@ -13,6 +16,17 @@ public class TrainerCard extends Card {
         this.cardName = cardName;
         this.holofoil = holofoil;
         this.effects = effects;
+    }
+
+    //EFFECTS: returns card as JSON object
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("cardType", "trainer");
+        json.put("cardName", cardName);
+        json.put("holofoil", holofoil);
+        json.put("effects", effects);
+        return json;
     }
 
     //EFFECTS: Getter for trainer cards name

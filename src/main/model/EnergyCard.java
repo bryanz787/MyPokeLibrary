@@ -1,5 +1,8 @@
 package model;
 
+import org.json.JSONObject;
+import persistance.Writable;
+
 //Represents an energy card in a given collection, has attributes needed to describe the card
 public class EnergyCard extends Card {
 
@@ -34,11 +37,21 @@ public class EnergyCard extends Card {
             return "dark";
         } else if (type.equals("s")) {
             return "steel";
-        } else if (type.equals("w")){
+        } else if (type.equals("w")) {
             return "colourless";
         } else {
             return type;
         }
+    }
+
+    //EFFECTS: returns card as JSON object
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("cardType", "energy");
+        json.put("type", type);
+        json.put("holofoil", holofoil);
+        return json;
     }
 
     //EFFECTS: Getter for energy cards type
