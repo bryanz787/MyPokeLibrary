@@ -47,15 +47,11 @@ public class JsonReaderTest {
     void testReaderGeneral() {
         JsonReader reader = new JsonReader("./data/testFile.json");
         try {
-            cardsList = reader.readCollection();
-            deckList = reader.readDeckList();
-            userName = reader.readUsername();
-            assertEquals("bryan", userName);
-            assertEquals(10, cardsList.collectionSize());
-            assertEquals(1, deckList.size());
+            assertEquals("bryan", reader.readUsername());
+            assertEquals(10, reader.readCollection().collectionSize());
+            assertEquals(1, reader.readDeckList().size());
         } catch (IOException e) {
             fail("Couldn't read from file");
         }
     }
-
 }
