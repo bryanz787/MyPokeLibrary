@@ -3,6 +3,7 @@ package persistance;
 import model.Collection;
 import model.Deck;
 import org.junit.jupiter.api.Test;
+import ui.CollectionApp;
 
 import java.io.IOException;
 import java.util.List;
@@ -14,6 +15,7 @@ public class JsonReaderTest {
     private Collection cardsList;
     private List<Deck> deckList;
     private String userName;
+    private CollectionApp testApp;
 
     @Test
     void testReaderNonExistentFile() {
@@ -27,7 +29,7 @@ public class JsonReaderTest {
     }
 
     @Test
-    void testReaderEmptyWorkRoom() {
+    void testReaderEmptyFile() {
         JsonReader reader = new JsonReader("./data/emptyTest.json");
         try {
             cardsList = reader.readCollection();
@@ -42,7 +44,7 @@ public class JsonReaderTest {
     }
 
     @Test
-    void testReaderGeneralWorkRoom() {
+    void testReaderGeneral() {
         JsonReader reader = new JsonReader("./data/testFile.json");
         try {
             cardsList = reader.readCollection();
@@ -55,4 +57,5 @@ public class JsonReaderTest {
             fail("Couldn't read from file");
         }
     }
+
 }
