@@ -15,7 +15,7 @@ class JsonWriterTest {
     //read in a copy of what was written out.
 
     @Test
-    void testWriterInvalidFile() {
+    public void testWriterInvalidFile() {
         try {
             String userName = "bryan";
             JsonWriter writer = new JsonWriter("./data/my\0illegal:fileName.json");
@@ -27,7 +27,7 @@ class JsonWriterTest {
     }
 
     @Test
-    void testWriterSingleField() {
+    public void testWriterSingleField() {
         try {
             String userName = "Bryan";
             JsonWriter writer = new JsonWriter("./data/testSingle.json");

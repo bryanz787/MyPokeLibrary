@@ -15,10 +15,9 @@ public class JsonReaderTest {
     private Collection cardsList;
     private List<Deck> deckList;
     private String userName;
-    private CollectionApp testApp;
 
     @Test
-    void testReaderNonExistentFile() {
+    public void testReaderNonExistentFile() {
         JsonReader reader = new JsonReader("./data/noSuchFile.json");
         try {
             cardsList = reader.readCollection();
@@ -29,7 +28,7 @@ public class JsonReaderTest {
     }
 
     @Test
-    void testReaderEmptyFile() {
+    public void testReaderEmptyFile() {
         JsonReader reader = new JsonReader("./data/emptyTest.json");
         try {
             cardsList = reader.readCollection();
@@ -44,7 +43,7 @@ public class JsonReaderTest {
     }
 
     @Test
-    void testReaderGeneral() {
+    public void testReaderGeneral() {
         JsonReader reader = new JsonReader("./data/testFile.json");
         try {
             assertEquals("bryan", reader.readUsername());
