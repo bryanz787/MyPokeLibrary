@@ -1,0 +1,59 @@
+{"cardsList": [
+    {
+        "hitpoints": 50,
+        "holofoil": false,
+        "stage": 0,
+        "pokeName": "base",
+        "pokeType": "fairy",
+        "cardType": "pokemon"
+    },
+    {
+        "effects": "none",
+        "holofoil": false,
+        "cardName": "testTrainer",
+        "cardType": "trainer"
+    },
+    {
+        "holofoil": false,
+        "cardType": "energy",
+        "type": "fire"
+    },
+    {
+        "hitpoints": 50,
+        "holofoil": false,
+        "stage": 0,
+        "pokeName": "base",
+        "pokeType": "fairy",
+        "cardType": "pokemon"
+    },
+    {
+        "effects": "none",
+        "holofoil": false,
+        "cardName": "testTrainer",
+        "cardType": "trainer"
+    },
+    {
+        "holofoil": false,
+        "cardType": "energy",
+        "type": "fire"
+    },
+    {
+        "hitpoints": 50,
+        "holofoil": false,
+        "stage": 0,
+        "pokeName": "base",
+        "pokeType": "fairy",
+        "cardType": "pokemon"
+    },
+    {
+        "effects": "none",
+        "holofoil": false,
+        "cardName": "testTrainer",
+        "cardType": "trainer"
+    },
+    {
+        "holofoil": false,
+        "cardType": "energy",
+        "type": "fire"
+    }
+]}
