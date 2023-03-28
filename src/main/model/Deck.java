@@ -8,7 +8,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-//A deck is a collection of cards, a deck is of arbitrary length but a legal deck is exactly 60 cards
+//A deck is a collection of cards, a deck is of arbitrary length, a legal deck is exactly 60 cards amongst other things
 public class Deck implements Writable {
     private List<Card> deck;
     private String deckName;

@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+//A series of tests for the TrainerCard class in model
 public class TrainerCardTest {
     TrainerCard testTrainerA;
     TrainerCard testTrainerB;

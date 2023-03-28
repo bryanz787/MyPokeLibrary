@@ -9,7 +9,8 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-// Represents a writer that writes JSON representation of workroom to file
+// Represents a writer that writes JSON representation of the collection app and models to file
+// Code adapted from JSONSerializationDemo
 public class JsonWriter {
     private static final int TAB = 4;
     private PrintWriter writer;

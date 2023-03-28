@@ -7,7 +7,7 @@ import persistance.Writable;
 import java.util.ArrayList;
 import java.util.List;
 
-//A class representing a person and their pokemon card collection
+//A class representing a persons pokemon card collection
 public class Collection implements Writable {
     private List<Card> collection;
 

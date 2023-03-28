@@ -13,10 +13,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
+
+//Represents the collection app, provides the user with interactions and helps them navigate
 public class CollectionApp {
 
     private static final int CARDS_PER_PAGE = 10;
-    private static final String JSON_STORE = "./data/emptyTest.json";
+    private static final String JSON_STORE = "./data/testFile.json";
 
     private String userName;
     private Collection cardsList;

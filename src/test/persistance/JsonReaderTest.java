@@ -12,6 +12,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+//A series of tests for the JSONReader class in persistance
 public class JsonReaderTest {
     private Collection cardsList;
     private List<Deck> deckList;

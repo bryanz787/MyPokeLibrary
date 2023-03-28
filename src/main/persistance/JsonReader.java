@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
+// Represents a reader that reads JSON files to use when loading
+// Code adapted from JSONSerializationDemo
 public class JsonReader {
     private String source;
 

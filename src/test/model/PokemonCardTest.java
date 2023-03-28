@@ -9,6 +9,7 @@ import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+//A series of tests for the PokemonCard class in model
 public class PokemonCardTest {
 
     PokemonCard testPokeR;

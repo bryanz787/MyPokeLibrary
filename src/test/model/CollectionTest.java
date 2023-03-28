@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+//A series of tests for the Collection class in model
 public class CollectionTest {
     Collection test;
     PokemonCard base;
