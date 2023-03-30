@@ -55,6 +55,17 @@ public class EnergyCard extends Card {
         return json;
     }
 
+    //EFFECTS: Returns the representation of an energy card as a string
+    @Override
+    public String toString() {
+        return "[" + holoString() + "] " + getName();
+    }
+
+    //EFFECTS: returns string representation of whether a card is holographic or not
+    public String holoString() {
+        return holofoil ? "HOLO" : "NON-HOLO";
+    }
+
     //EFFECTS: Getter for energy cards type
     public String getType() {
         return type;
@@ -69,6 +80,6 @@ public class EnergyCard extends Card {
     //EFFECTS: Gets energy cards name
     @Override
     public String getName() {
-        return getType() + " energy";
+        return getType() + " Energy";
     }
 }

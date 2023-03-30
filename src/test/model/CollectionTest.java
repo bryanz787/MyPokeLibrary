@@ -99,6 +99,6 @@ public class CollectionTest {
 
         assertEquals(25, count);
         assertEquals("pokemon", testJ.getJSONObject(6).getString("cardType"));
-        assertEquals(2, testJ.getJSONObject(6).getString("stage"));
+        assertEquals("base", testJ.getJSONObject(5).getString("pokeName"));
     }
 }

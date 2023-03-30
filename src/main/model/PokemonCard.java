@@ -67,6 +67,18 @@ public class PokemonCard extends Card {
         return json;
     }
 
+    //EFFECTS: Returns the representation of a pokemon card as a string
+    @Override
+    public String toString() {
+        return "[" + holoString() + "] " + pokeName
+                + " | STAGE: " + stage + " | " + "TYPE: " + pokeType + " | " + "HP: " + hitPoints;
+    }
+
+    //EFFECTS: returns string representation of whether a card is holographic or not
+    public String holoString() {
+        return holofoil ? "HOLO" : "NON-HOLO";
+    }
+
     //EFFECTS: Getter for the Pokemon cards name field
     @Override
     public String getName() {

@@ -35,4 +35,16 @@ public class TrainerCardTest {
         assertEquals("testTrainerA", testJ.get("cardName"));
         assertEquals(false, testJ.get("holofoil"));
     }
+
+    @Test
+    public void testHoloString() {
+        assertEquals("NON-HOLO", testTrainerA.holoString());
+        assertEquals("HOLO", testTrainerB.holoString());
+    }
+
+    @Test
+    public void testToString() {
+        assertEquals("[NON-HOLO] testTrainerA | EFFECTS: draw 3 cards from deck", testTrainerA.toString());
+        assertEquals("[HOLO] testTrainerB | EFFECTS: none", testTrainerB.toString());
+    }
 }

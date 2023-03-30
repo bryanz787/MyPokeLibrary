@@ -39,18 +39,18 @@ public class EnergyCardTest {
 
     @Test
     public void testConstructor() {
-        assertEquals("fire energy", testEnergyR.getName());
-        assertEquals("fighting energy", testEnergyBr.getName());
-        assertEquals("dragon energy", testEnergyGo.getName());
-        assertEquals("electric energy", testEnergyY.getName());
-        assertEquals("grass energy", testEnergyGr.getName());
-        assertEquals("water energy", testEnergyBl.getName());
-        assertEquals("fairy energy", testEnergyPi.getName());
-        assertEquals("psychic energy", testEnergyPu.getName());
-        assertEquals("dark energy", testEnergyB.getName());
-        assertEquals("steel energy", testEnergyS.getName());
-        assertEquals("colourless energy", testEnergyW.getName());
-        assertEquals("dragon energy", testEnergyOther.getName());
+        assertEquals("fire Energy", testEnergyR.getName());
+        assertEquals("fighting Energy", testEnergyBr.getName());
+        assertEquals("dragon Energy", testEnergyGo.getName());
+        assertEquals("electric Energy", testEnergyY.getName());
+        assertEquals("grass Energy", testEnergyGr.getName());
+        assertEquals("water Energy", testEnergyBl.getName());
+        assertEquals("fairy Energy", testEnergyPi.getName());
+        assertEquals("psychic Energy", testEnergyPu.getName());
+        assertEquals("dark Energy", testEnergyB.getName());
+        assertEquals("steel Energy", testEnergyS.getName());
+        assertEquals("colourless Energy", testEnergyW.getName());
+        assertEquals("dragon Energy", testEnergyOther.getName());
 
         assertFalse(testEnergyBl.getHolofoil());
         assertTrue(testEnergyW.getHolofoil());
@@ -64,5 +64,17 @@ public class EnergyCardTest {
         JSONObject testJ = testEnergyBr.toJson();
         assertEquals("fighting", testJ.get("type"));
         assertEquals(false, testJ.get("holofoil"));
+    }
+
+    @Test
+    public void testHoloString() {
+        assertEquals("NON-HOLO", testEnergyS.holoString());
+        assertEquals("HOLO", testEnergyW.holoString());
+    }
+
+    @Test
+    public void testToString() {
+        assertEquals("[NON-HOLO] steel Energy", testEnergyS.toString());
+        assertEquals("[HOLO] colourless Energy", testEnergyW.toString());
     }
 }

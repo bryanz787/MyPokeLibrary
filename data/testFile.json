@@ -405,6 +405,14 @@
             "holofoil": false,
             "cardName": "pokeball",
             "cardType": "trainer"
+        },
+        {
+            "hitpoints": 30,
+            "holofoil": true,
+            "stage": 0,
+            "pokeName": "Squirtle",
+            "pokeType": "Water",
+            "cardType": "pokemon"
         }
     ]
 }

@@ -29,6 +29,17 @@ public class TrainerCard extends Card {
         return json;
     }
 
+    //EFFECTS: Returns the representation of a trainer card as a string
+    @Override
+    public String toString() {
+        return "[" + holoString() + "] " + cardName + " | EFFECTS: " + effects;
+    }
+
+    //EFFECTS: returns string representation of whether a card is holographic or not
+    public String holoString() {
+        return holofoil ? "HOLO" : "NON-HOLO";
+    }
+
     //EFFECTS: Getter for trainer cards name
     @Override
     public String getName() {

@@ -81,4 +81,16 @@ public class PokemonCardTest {
 
     }
 
+    @Test
+    public void testHoloString() {
+        assertEquals("NON-HOLO", testPokeR.holoString());
+        assertEquals("HOLO", testPokeBr.holoString());
+    }
+
+    @Test
+    public void testToString() {
+        assertEquals("[NON-HOLO] fire | STAGE: 0 | TYPE: fire | HP: 100", testPokeR.toString());
+        assertEquals("[HOLO] fighting | STAGE: 1 | TYPE: fighting | HP: 130", testPokeBr.toString());
+    }
+
 }

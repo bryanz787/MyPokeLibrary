@@ -82,7 +82,7 @@ public class Deck implements Writable {
         List<List> orderedCounts = new ArrayList<List>();
 
         for (Card c : deck) {
-            if (!c.getName().contains("energy")) {
+            if (!c.getName().contains("Energy")) {
                 Integer nameIndex = null;
 
                 if (!uniqueName.contains(c.getName())) {
