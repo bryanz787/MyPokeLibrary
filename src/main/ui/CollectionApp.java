@@ -554,8 +554,8 @@ public class CollectionApp extends JFrame {
         JPanel inputFieldPane = new JPanel(new GridLayout(3, 1));
 
         ImageIcon img = new ImageIcon("data/pokeball.png");
-        Image i = img.getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT);
-        ImageIcon imgIcon = new ImageIcon(i);
+        Image imgimg = img.getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT);
+        ImageIcon imgIcon = new ImageIcon(imgimg);
 
         public AddEnergyCardsListener() {
             submitButton = new JButton("Submit");
@@ -690,8 +690,8 @@ public class CollectionApp extends JFrame {
     // EFFECTS: writes changes to file, throws exception if file not found
     class AddSaveStateListener implements ActionListener {
         ImageIcon img = new ImageIcon("data/pokeball.png");
-        Image i = img.getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT);
-        ImageIcon imgIcon = new ImageIcon(i);
+        Image imgimg = img.getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT);
+        ImageIcon imgIcon = new ImageIcon(imgimg);
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -728,8 +728,8 @@ public class CollectionApp extends JFrame {
     //         throws error if file not found
     class AddLoadStateListener implements ActionListener {
         ImageIcon img = new ImageIcon("data/pokeball.png");
-        Image i = img.getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT);
-        ImageIcon imgIcon = new ImageIcon(i);
+        Image imgimg = img.getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT);
+        ImageIcon imgIcon = new ImageIcon(imgimg);
 
         @Override
         public void actionPerformed(ActionEvent e) {
