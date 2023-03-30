@@ -373,7 +373,7 @@ public class CollectionApp extends JFrame {
                 String pokeName = pokemonName.getText();
                 Integer hp = Integer.parseInt(hitpoints.getText());
                 Card toAdd = new PokemonCard(pokeName, type, Boolean.valueOf(holo),
-                                             hp, Integer.parseInt(stage.strip()));
+                                             hp, Integer.parseInt(stage));
                 cardsList.addCard(toAdd);
 
 
