@@ -30,7 +30,7 @@ public class CollectionApp extends JFrame {
     public static final String[] stages = {"[Select]", "0", "1", "2"};
 
     //where the users data will be saved and read from
-    private static final String JSON_STORE = "./data/testFile.json";
+    private static final String JSON_STORE = "./data/userFile.json";
 
     //For displaying card in terminal
     private static final int CARDS_PER_PAGE = 10;

@@ -49,7 +49,7 @@ public class JsonReaderTest {
         JsonReader reader = new JsonReader("./data/testFile.json");
         try {
             assertEquals("bryan", reader.readUsername());
-            assertEquals(10, reader.readCollection().collectionSize());
+            assertEquals(11, reader.readCollection().collectionSize());
             assertEquals(1, reader.readDeckList().size());
         } catch (IOException e) {
             fail("Couldn't read from file");
