@@ -126,13 +126,10 @@ public class CollectionApp extends JFrame {
     private void displayMainMenu() {
         JPanel layout = new JPanel(new BorderLayout());
         JPanel menuButtons = new JPanel();
-        JLabel greeting = new JLabel();
-        greeting.setText("<html><center>Welcome to MyPokeLibrary!<br>"
-                + "Select an option below to proceed.</center></html>");
-        greeting.setBorder(new EmptyBorder(50, 10, 0, 0));
+        JLabel greeting = makeGreeting();
 
         menuButtons.setBorder(new EmptyBorder(5, 5, 5, 5));
-        JPanel buttonPanel = new JPanel(new GridLayout(10, 1, 10, 5));
+        JPanel buttonPanel = new JPanel(new GridLayout(11, 1, 10, 5));
         buttonPanel.setBorder(new EmptyBorder(30, 0, 0, 0));
 
         //adds the buttons for each option
@@ -142,6 +139,7 @@ public class CollectionApp extends JFrame {
         addEnergyToCollection(buttonPanel);
         viewMyDecks(buttonPanel);
         addToDecks(buttonPanel);
+        removeFromDecks(buttonPanel);
         saveState(buttonPanel);
         loadState(buttonPanel);
         quit(buttonPanel);
@@ -152,6 +150,16 @@ public class CollectionApp extends JFrame {
 
         splitScreen.setLeftComponent(layout);
         layout.revalidate();
+    }
+
+    //EFFECT: creates the text displayed above the menu of buttons
+    public JLabel makeGreeting() {
+        JLabel greeting = new JLabel();
+        greeting.setText("<html><center>Welcome to MyPokeLibrary!<br>"
+                + "Select an option below to proceed.</center></html>");
+        greeting.setBorder(new EmptyBorder(30, 10, 0, 0));
+
+        return greeting;
     }
 
     //MODIFIES: this
@@ -169,7 +177,6 @@ public class CollectionApp extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             JPanel layout = new JPanel(new GridLayout(2, 1, 0, 10));
-            //JLabel cardLabel = new JLabel("Your Cards:");
             modelList = new DefaultListModel<>();
             listComponents = new JList<>();
 
@@ -199,7 +206,7 @@ public class CollectionApp extends JFrame {
         private JTextArea getSummaryPanel() {
             JTextArea summaryStats = new JTextArea(getCollectionStats());
             summaryStats.setEditable(false);
-            summaryStats.setBackground(new Color(180,180,180));
+            summaryStats.setBackground(new Color(180, 180, 180));
             summaryStats.setPreferredSize(new Dimension(400, 50));
             return summaryStats;
         }
@@ -252,6 +259,10 @@ public class CollectionApp extends JFrame {
         JPanel submitPanel;
         JPanel layout = new JPanel(new GridBagLayout());
         JPanel inputFieldPane = new JPanel(new GridLayout(6, 1));
+
+        ImageIcon img = new ImageIcon("data/pokeball.png");
+        Image imgimg = img.getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT);
+        ImageIcon imgIcon = new ImageIcon(imgimg);
 
         //EFFECTS: adds action for the submit button
         public AddPokeCardsListener() {
@@ -373,7 +384,7 @@ public class CollectionApp extends JFrame {
                 String pokeName = pokemonName.getText();
                 Integer hp = Integer.parseInt(hitpoints.getText());
                 Card toAdd = new PokemonCard(pokeName, type, Boolean.valueOf(holo),
-                                             hp, Integer.parseInt(stage));
+                        hp, Integer.parseInt(stage));
                 cardsList.addCard(toAdd);
 
 
@@ -381,9 +392,6 @@ public class CollectionApp extends JFrame {
                 JLabel successfullyMsg = new JLabel("Successfully added");
                 successfullyMsg.setOpaque(false);
                 JLabel successfulIcon = new JLabel();
-                ImageIcon img = new ImageIcon("data/pokeball.png");
-                Image i = img.getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT);
-                ImageIcon imgIcon = new ImageIcon(i);
                 successfulIcon.setIcon(imgIcon);
                 container.add(successfulIcon);
                 container.add(successfullyMsg);
@@ -425,6 +433,10 @@ public class CollectionApp extends JFrame {
         JPanel submitPanel;
         JPanel layout = new JPanel(new GridBagLayout());
         JPanel inputFieldPane = new JPanel(new GridLayout(4, 1));
+
+        ImageIcon img = new ImageIcon("data/pokeball.png");
+        Image imgimg = img.getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT);
+        ImageIcon imgIcon = new ImageIcon(imgimg);
 
         public AddTrainerCardsListener() {
             submitButton = new JButton("Submit");
@@ -510,9 +522,6 @@ public class CollectionApp extends JFrame {
                 JLabel successfullyMsg = new JLabel("Successfully added");
                 successfullyMsg.setOpaque(false);
                 JLabel successfulIcon = new JLabel();
-                ImageIcon img = new ImageIcon("data/pokeball.png");
-                Image i = img.getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT);
-                ImageIcon imgIcon = new ImageIcon(i);
                 successfulIcon.setIcon(imgIcon);
                 container.add(successfulIcon);
                 container.add(successfullyMsg);
@@ -571,7 +580,7 @@ public class CollectionApp extends JFrame {
             createTypeNameAndInput();
             createFoilNameAndInput();
 
-            submitPanel = new JPanel(new GridLayout(1, 1));
+            submitPanel = new JPanel(new GridLayout(2, 1));
             submitPanel.add(submitButton);
             inputFieldPane.add(submitPanel);
 
@@ -619,8 +628,8 @@ public class CollectionApp extends JFrame {
             inputFieldPane.add(holoPanel);
         }
 
-        // MODIFIES: cardsList
-        // EFFECTS: adds new energy card object with specified fields
+        // MODIFIES: cardslist
+        // EFFECTS: adds new energyCard object with specified fields
         class SubmitButtonListener implements ActionListener {
 
             @Override
@@ -640,33 +649,130 @@ public class CollectionApp extends JFrame {
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     //MODIFIES: this
     //EFFECTS: makes buttons for menu to view decks
     private void viewMyDecks(JPanel buttonPanel) {
         JButton butt = new JButton("View My Decks");
-
+        butt.addActionListener(new ViewDecksListener());
         buttonPanel.add(butt);
     }
+
+
+    //Class that extends actionListener and gives user menu to select decks and from that display cards in deck
+    class ViewDecksListener implements ActionListener {
+        JComboBox deckSelector;
+        String[] deckNamesList;
+        String deckSelection;
+        String[] nameSplit;
+        String deckName;
+        Deck toView;
+        JPanel layout;
+
+        //EFFECTS: waits for action and then displays cards accordingly
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            layout = new JPanel();
+            modelList = new DefaultListModel<>();
+            listComponents = new JList<>();
+
+            if (deckList.size() == 0) {
+                JLabel noDecksMsg = new JLabel("<html><center>Oops! It looks like you dont have any decks<br>"
+                        + "in your collection, try adding some!</center></html>");
+                noDecksMsg.setBorder(new EmptyBorder(0, 30, 0, 0));
+                layout.add(noDecksMsg, BorderLayout.SOUTH);
+            } else {
+                addDeckNames();
+                deckSelector = new JComboBox(deckNamesList);
+
+                deckSelector.addActionListener(deckSelectorListener());
+
+                layout.add(deckSelector);
+                listComponents.setModel(modelList);
+                JScrollPane scrollPane = new JScrollPane(listComponents);
+                scrollPane.setPreferredSize(new Dimension(365, 400));
+                layout.add(scrollPane, BorderLayout.SOUTH);
+
+                layout.setBorder(BorderFactory.createTitledBorder("Deck Cards:"));
+            }
+            splitScreen.setRightComponent(layout);
+            layout.revalidate();
+        }
+
+        //EFFECTS: creates new action listener for the combobox
+        private ActionListener deckSelectorListener() {
+            return new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    addDeckNames();
+
+                    deckSelectorInit();
+
+                    for (Deck d : deckList) {
+                        if (d.getDeckName().equals(deckName)) {
+                            toView = d;
+                        }
+                    }
+
+                    for (int i = 0; i < toView.deckSize(); i++) {
+                        addCardToList(toView.getCard(i));
+                    }
+
+                    layout.add(deckSelector);
+                    listComponents.setModel(modelList);
+                    JScrollPane scrollPane = new JScrollPane(listComponents);
+                    scrollPane.setPreferredSize(new Dimension(365, 400));
+                    layout.add(scrollPane, BorderLayout.SOUTH);
+
+                    layout.setBorder(BorderFactory.createTitledBorder("Deck Cards:"));
+
+                    splitScreen.setRightComponent(layout);
+                    layout.revalidate();
+                }
+            };
+        }
+
+        //EFFECTS: initializes components used in deckSelector
+        private void deckSelectorInit() {
+            deckSelection = (String) deckSelector.getSelectedItem();
+            nameSplit = deckSelection.split("]");
+            deckName = nameSplit[1];
+            toView = deckList.get(0);
+            layout = new JPanel();
+            modelList = new DefaultListModel<>();
+        }
+
+        //EFFECTS: helper to get items to display
+        private void addCardToList(Card c) {
+            modelList.addElement(c.toString());
+        }
+
+        //EFFECTS: adds names of all decks to string array
+        public void addDeckNames() {
+            List<String> deckNames = new ArrayList<>();
+
+            deckNames.add("[Select]");
+            for (Deck d : deckList) {
+                deckNames.add("[" + legalString(d.legalDeck()) + "]" + d.getDeckName());
+            }
+            deckNamesList = deckNames.toArray(new String[deckNames.size()]);
+        }
+
+        private String legalString(Boolean legal) {
+            return legal ? "TCG Legal" : "Not TCG Legal";
+        }
+    }
+
+
+
+
+
+
 
     //MODIFIES: this
     //EFFECTS: makes buttons for menu to add decks
     private void addToDecks(JPanel buttonPanel) {
         JButton butt = new JButton("Add A Deck");
+
         buttonPanel.add(butt);
     }
 
@@ -676,6 +782,103 @@ public class CollectionApp extends JFrame {
 
 
 
+
+
+    //MODIFIES: this
+    //EFFECTS: makes buttons for menu to add decks
+    private void removeFromDecks(JPanel buttonPanel) {
+        JButton butt = new JButton("Remove A Deck");
+        butt.addActionListener(new DeckRemoverListener());
+        buttonPanel.add(butt);
+    }
+
+    //Class that adds functionality to the remove decks function
+    class DeckRemoverListener implements ActionListener {
+        private JButton submitButton;
+        String[] deckNamesList;
+        Deck toRemove;
+
+        JComboBox<String> removeSelector;
+
+        JPanel layout = new JPanel(new GridBagLayout());
+        JPanel inputFieldPane = new JPanel(new GridLayout(2, 1));
+
+        ImageIcon img = new ImageIcon("data/pokeball.png");
+        Image imgimg = img.getImage().getScaledInstance(70, 70, Image.SCALE_DEFAULT);
+        ImageIcon imgIcon = new ImageIcon(imgimg);
+
+        public DeckRemoverListener() {
+            submitButton = new JButton("Remove");
+            submitButton.addActionListener(new RemoveButtonListener());
+        }
+
+        //MODIFIES: deckslist
+        //EFFECTS: makes a combobox that displays all the decks
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            inputFieldPane.removeAll();
+
+            addDeckNames();
+            removeSelector = new JComboBox(deckNamesList);
+            removeSelector.addActionListener(deckSelectorListener());
+
+            inputFieldPane.add(removeSelector);
+            inputFieldPane.add(submitButton);
+            layout.add(inputFieldPane);
+
+            splitScreen.setRightComponent(layout);
+            layout.revalidate();
+        }
+
+        //EFFECTS: adds names of all decks to string array
+        public void addDeckNames() {
+            List<String> deckNames = new ArrayList<>();
+            deckNames.add("[Select]");
+            for (Deck d : deckList) {
+                deckNames.add("[" + legalString(d.legalDeck()) + "]" + d.getDeckName());
+            }
+            deckNamesList = deckNames.toArray(new String[deckNames.size()]);
+        }
+
+        private String legalString(Boolean legal) {
+            return legal ? "TCG Legal" : "Not TCG Legal";
+        }
+
+        //EFFECTS: creates new action listener for the combobox
+        private ActionListener deckSelectorListener() {
+            return new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String deckSelection = (String) removeSelector.getSelectedItem();
+                    String[] nameSplit = deckSelection.split("]");
+                    String deckName = nameSplit[1];
+
+                    for (int i = 0; i < deckList.size(); i++) {
+                        if (deckList.get(i).getDeckName().equals(deckName)) {
+                            toRemove = deckList.get(i);
+                        }
+                    }
+                }
+            };
+        }
+
+        // MODIFIES: cardslist
+        // EFFECTS: adds button that when pressed removes selected deck
+        class RemoveButtonListener implements ActionListener {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                deckList.remove(toRemove);
+                JPanel container = new JPanel(new GridBagLayout());
+                JLabel successfullyMsg = new JLabel("Successfully Removed");
+                successfullyMsg.setOpaque(false);
+                JLabel successfulIcon = new JLabel();
+                successfulIcon.setIcon(imgIcon);
+                container.add(successfulIcon);
+                container.add(successfullyMsg);
+                splitScreen.setRightComponent(container);
+            }
+        }
+    }
 
 
     //MODIFIES: this
@@ -770,20 +973,6 @@ public class CollectionApp extends JFrame {
 
         buttonPanel.add(butt);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     //MODIFIES: userName, cardsList, decksList
@@ -1378,7 +1567,7 @@ public class CollectionApp extends JFrame {
             jsonArray.put(d.toJson());
         }
 
-        json.put("userName", userName);
+        json.put("userName", "bryan");
         json.put("cardsList", cardsList.toJson());
         json.put("decksList", jsonArray);
 
