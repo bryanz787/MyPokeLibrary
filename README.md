@@ -30,3 +30,17 @@ collection.
 Trading Card Game* official deck rules.
 - As a user, I want to be able to save my collection to a file before I exit
 - As a user, I want to be able to load my collection from a file if I so choose
+
+### Instructions for Grader
+
+- You can generate the first required action related to adding Xs to a Y by
+pressing either the "Add Pokemon", "Add Trainer", or "Add Energy" buttons 
+on the left side 
+of the GUI.
+- You can generate the second required action related to adding Xs to a Y by pressing
+the "Remove A Deck" button
+- You can locate my visual component by pressing the "Submit" or "Remove" button on 
+the right hand side of the screen given that there's proper inputs for the other
+fields on the GUI
+- You can save the state of my application by clicking the "Save Progress" button
+- You can reload the state of my application by clicking the "Load Progress" button
