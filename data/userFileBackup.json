@@ -1,0 +1,433 @@
+{
+  "decksList": [
+    {
+      "cards": [
+        {
+          "hitpoints": 30,
+          "holofoil": false,
+          "stage": 0,
+          "pokeName": "charmandar",
+          "pokeType": "fire",
+          "cardType": "pokemon"
+        },
+        {
+          "hitpoints": 30,
+          "holofoil": false,
+          "stage": 0,
+          "pokeName": "charmandar",
+          "pokeType": "fire",
+          "cardType": "pokemon"
+        },
+        {
+          "hitpoints": 30,
+          "holofoil": false,
+          "stage": 0,
+          "pokeName": "charmandar",
+          "pokeType": "fire",
+          "cardType": "pokemon"
+        },
+        {
+          "hitpoints": 30,
+          "holofoil": false,
+          "stage": 0,
+          "pokeName": "charmandar",
+          "pokeType": "fire",
+          "cardType": "pokemon"
+        },
+        {
+          "hitpoints": 70,
+          "holofoil": false,
+          "stage": 1,
+          "pokeName": "charmeleon",
+          "pokeType": "fire",
+          "cardType": "pokemon"
+        },
+        {
+          "hitpoints": 70,
+          "holofoil": false,
+          "stage": 1,
+          "pokeName": "charmeleon",
+          "pokeType": "fire",
+          "cardType": "pokemon"
+        },
+        {
+          "hitpoints": 70,
+          "holofoil": false,
+          "stage": 1,
+          "pokeName": "charmeleon",
+          "pokeType": "fire",
+          "cardType": "pokemon"
+        },
+        {
+          "hitpoints": 70,
+          "holofoil": false,
+          "stage": 1,
+          "pokeName": "charmeleon",
+          "pokeType": "fire",
+          "cardType": "pokemon"
+        },
+        {
+          "hitpoints": 120,
+          "holofoil": true,
+          "stage": 2,
+          "pokeName": "charizard",
+          "pokeType": "fire",
+          "cardType": "pokemon"
+        },
+        {
+          "hitpoints": 120,
+          "holofoil": true,
+          "stage": 2,
+          "pokeName": "charizard",
+          "pokeType": "fire",
+          "cardType": "pokemon"
+        },
+        {
+          "hitpoints": 120,
+          "holofoil": true,
+          "stage": 2,
+          "pokeName": "charizard",
+          "pokeType": "fire",
+          "cardType": "pokemon"
+        },
+        {
+          "hitpoints": 120,
+          "holofoil": true,
+          "stage": 2,
+          "pokeName": "charizard",
+          "pokeType": "fire",
+          "cardType": "pokemon"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "holofoil": false,
+          "cardType": "energy",
+          "type": "fire"
+        },
+        {
+          "effects": "draw 3 cards from deck",
+          "holofoil": false,
+          "cardName": "pokeball",
+          "cardType": "trainer"
+        },
+        {
+          "effects": "draw 3 cards from deck",
+          "holofoil": false,
+          "cardName": "pokeball",
+          "cardType": "trainer"
+        },
+        {
+          "effects": "draw 3 cards from deck",
+          "holofoil": false,
+          "cardName": "pokeball",
+          "cardType": "trainer"
+        }
+      ],
+      "deckName": "charDeck"
+    },
+    {
+      "cards": [
+        {
+          "hitpoints": 30,
+          "holofoil": true,
+          "stage": 0,
+          "pokeName": "Squirtle",
+          "pokeType": "Water",
+          "cardType": "pokemon"
+        }
+      ],
+      "deckName": "squirtle!"
+    }
+  ],
+  "userName": "bryan",
+  "cardsList": [
+    {
+      "hitpoints": 30,
+      "holofoil": false,
+      "stage": 0,
+      "pokeName": "charmandar",
+      "pokeType": "fire",
+      "cardType": "pokemon"
+    },
+    {
+      "hitpoints": 70,
+      "holofoil": false,
+      "stage": 1,
+      "pokeName": "charmeleon",
+      "pokeType": "fire",
+      "cardType": "pokemon"
+    },
+    {
+      "hitpoints": 120,
+      "holofoil": true,
+      "stage": 2,
+      "pokeName": "charizard",
+      "pokeType": "fire",
+      "cardType": "pokemon"
+    },
+    {
+      "holofoil": false,
+      "cardType": "energy",
+      "type": "fire"
+    },
+    {
+      "holofoil": false,
+      "cardType": "energy",
+      "type": "fire"
+    },
+    {
+      "holofoil": false,
+      "cardType": "energy",
+      "type": "fire"
+    },
+    {
+      "holofoil": false,
+      "cardType": "energy",
+      "type": "fire"
+    },
+    {
+      "holofoil": false,
+      "cardType": "energy",
+      "type": "fire"
+    },
+    {
+      "effects": "draw 3 cards from deck",
+      "holofoil": false,
+      "cardName": "pokeball",
+      "cardType": "trainer"
+    },
+    {
+      "effects": "draw 3 cards from deck",
+      "holofoil": false,
+      "cardName": "pokeball",
+      "cardType": "trainer"
+    },
+    {
+      "hitpoints": 30,
+      "holofoil": true,
+      "stage": 0,
+      "pokeName": "Squirtle",
+      "pokeType": "Water",
+      "cardType": "pokemon"
+    }
+  ]
+}
