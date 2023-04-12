@@ -10,7 +10,7 @@ public abstract class Card implements Writable {
 
     //EFFECTS: logs card creation to event log
     public void log() {
-        EventLog.getInstance().logEvent(new Event( this.getName()
+        EventLog.getInstance().logEvent(new Event(this.getName()
                 + " has been added to the collection"));
     }
 
