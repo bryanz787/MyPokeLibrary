@@ -1,6 +1,7 @@
 package ui;
 
 import model.*;
+import model.Event;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import persistance.JsonReader;
@@ -186,10 +187,8 @@ public class CollectionApp extends JFrame {
                 noCardsMsg.setBorder(new EmptyBorder(0, 30, 0, 0));
                 layout.add(noCardsMsg, BorderLayout.CENTER);
             } else {
-                //layout.add(cardLabel, BorderLayout.NORTH);
-                for (int i = 0; i < cardsList.collectionSize(); i++) {
-                    addCardToList(i);
-                }
+                modelList = cardsList.addCards(modelList);
+
                 listComponents.setModel(modelList);
                 JScrollPane scrollPane = new JScrollPane(listComponents);
                 layout.add(scrollPane, BorderLayout.CENTER);
@@ -211,11 +210,11 @@ public class CollectionApp extends JFrame {
             return summaryStats;
         }
 
-        //EFFECTS: helper to get items to display
+        /*//EFFECTS: helper to get items to display
         private void addCardToList(int i) {
             Card toAdd = cardsList.getCard(i);
             modelList.addElement(toAdd.toString());
-        }
+        }*/
     }
 
     //MODIFIES: this
@@ -967,6 +966,7 @@ public class CollectionApp extends JFrame {
         butt.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                printEvents();
                 System.exit(0);
             }
         });
@@ -974,6 +974,12 @@ public class CollectionApp extends JFrame {
         buttonPanel.add(butt);
     }
 
+    //EFECTS: prints out contents of event log
+    private void printEvents() {
+        for (Event next : EventLog.getInstance()) {
+            System.out.println("\n" + next.toString());
+        }
+    }
 
     //MODIFIES: userName, cardsList, decksList
     //EFFECTS: gives the option of loading in a previous state to the user
@@ -1027,6 +1033,12 @@ public class CollectionApp extends JFrame {
             System.out.println("Unable to read from file: " + JSON_STORE);
         }
     }
+
+
+
+
+    //--------Code past this point used to implement console based version of application------
+
 
     //EFFECTS: Greets user, gets users username
     private void greet() {

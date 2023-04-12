@@ -53,6 +53,7 @@ public class JsonReader {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
         JSONArray jsonArray = jsonObject.getJSONArray("cardsList");
+        EventLog.getInstance().logEvent(new Event("Loaded CollectionApp."));
         return parseCollection(jsonArray);
     }
 

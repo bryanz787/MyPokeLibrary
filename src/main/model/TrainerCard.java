@@ -16,6 +16,7 @@ public class TrainerCard extends Card {
         this.cardName = cardName;
         this.holofoil = holofoil;
         this.effects = effects;
+        log();
     }
 
     //EFFECTS: returns card as JSON object

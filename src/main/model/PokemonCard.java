@@ -22,6 +22,7 @@ public class PokemonCard extends Card {
         this.holofoil = holofoil;
         this.hitPoints = hitPoints;
         this.stage = stage;
+        log();
     }
 
     //EFFECTS: returns full type name given abbreviation, defaults to colourless

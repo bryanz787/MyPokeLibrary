@@ -13,6 +13,7 @@ public class EnergyCard extends Card {
     public EnergyCard(String type, Boolean holofoil) {
         this.type = convertToType(type);
         this.holofoil = holofoil;
+        log();
     }
 
     //EFFECTS: returns full type name given abbreviation, defaults to colourless

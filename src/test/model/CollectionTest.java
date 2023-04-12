@@ -5,6 +5,7 @@ import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -79,6 +80,18 @@ public class CollectionTest {
         assertEquals(1 , test.countByCriteria("f"));
         assertEquals(11 , test.countByCriteria("q"));
 
+    }
+
+    @Test
+    public void testAddCards() {
+        DefaultListModel testList = new DefaultListModel();
+        testList = test.addCards(testList);
+        assertEquals(0, testList.size());
+
+        test.addCard(base);
+        test.addCard(testEnergyA);
+        testList = test.addCards(testList);
+        assertEquals(2, testList.size());
     }
 
     @Test

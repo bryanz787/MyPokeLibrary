@@ -4,13 +4,13 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import persistance.Writable;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
 //A class representing a persons pokemon card collection
 public class Collection implements Writable {
     private List<Card> collection;
-
 
     //EFFECTS: A constructor of a collection of pokemon cards
     public Collection() {
@@ -31,6 +31,18 @@ public class Collection implements Writable {
     //EFFECTS: returns the card at a given index
     public Card getCard(int index) {
         return collection.get(index);
+    }
+
+    //EFFECTS: adds string representations of cards to a DefaultModelList()
+    public DefaultListModel<Card> addCards(DefaultListModel modelList) {
+        DefaultListModel toReturn = modelList;
+        for (Card c : collection) {
+            toReturn.addElement(c.toString());
+        }
+
+        EventLog.getInstance().logEvent(new Event("Displayed cards in collection."));
+
+        return toReturn;
     }
 
     //EFFECTS: returns the number of a certain card type in a collection based off criteria

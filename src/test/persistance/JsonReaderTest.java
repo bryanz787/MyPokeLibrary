@@ -50,7 +50,7 @@ public class JsonReaderTest {
         try {
             assertEquals("bryan", reader.readUsername());
             assertEquals(11, reader.readCollection().collectionSize());
-            assertEquals(1, reader.readDeckList().size());
+            assertEquals(2, reader.readDeckList().size());
         } catch (IOException e) {
             fail("Couldn't read from file");
         }
