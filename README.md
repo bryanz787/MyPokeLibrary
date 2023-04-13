@@ -44,3 +44,69 @@ the right hand side of the screen given that there's proper inputs for the other
 fields on the GUI
 - You can save the state of my application by clicking the "Save Progress" button
 - You can reload the state of my application by clicking the "Load Progress" button
+
+### Phase 4: Task 2
+
+Wed Apr 12 21:53:03 PDT 2023
+Loaded CollectionApp.
+
+Wed Apr 12 21:53:03 PDT 2023
+charmandar has been added to the collection
+
+Wed Apr 12 21:53:03 PDT 2023
+charmeleon has been added to the collection
+
+Wed Apr 12 21:53:03 PDT 2023
+charizard has been added to the collection
+
+Wed Apr 12 21:53:03 PDT 2023
+fire Energy has been added to the collection
+
+Wed Apr 12 21:53:03 PDT 2023
+fire Energy has been added to the collection
+
+Wed Apr 12 21:53:03 PDT 2023
+fire Energy has been added to the collection
+
+Wed Apr 12 21:53:03 PDT 2023
+fire Energy has been added to the collection
+
+Wed Apr 12 21:53:03 PDT 2023
+fire Energy has been added to the collection
+
+Wed Apr 12 21:53:03 PDT 2023
+pokeball has been added to the collection
+
+Wed Apr 12 21:53:03 PDT 2023
+pokeball has been added to the collection
+
+Wed Apr 12 21:53:03 PDT 2023
+Squirtle has been added to the collection
+
+Wed Apr 12 21:53:24 PDT 2023
+caterpie has been added to the collection
+
+Wed Apr 12 21:53:27 PDT 2023
+Displayed cards in collection.
+
+Wed Apr 12 21:53:42 PDT 2023
+Saved CollectionApp.
+
+### Phase 4: Task 3
+The main change I would make to my program given more time is that I 
+would try to decrease the coupling in my program, especially in the 
+CollectionApp class in the ui package, as it stands right now I have
+a list of decks in a given collectionApp instance, instead I would like
+to change it and implement a seperate class in model to represent the 
+relationship between a list of decks and the Deck class as was done 
+for Collection and cards. Not only would that bring in some more consistency with
+my class structure, it would also help cut down the amount of
+code within the collectionApp class and move it elsewhere, improving readability.
+
+As it stands right now, the collectionApp class is too bloated with a
+many methods definitions and additional nested / anonymous classes, the main
+thing I would refactor in the future is to break the class down into smaller classes
+to decrease coupling and increase cohesion.
+
+
+
